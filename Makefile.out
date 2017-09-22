@@ -1,0 +1,21 @@
+SRC		=	main.cpp
+
+OBJ		=	$(SRC:%.cpp=%.o)
+NAME		=	OwlORM
+CXX		=	g++
+CXXFLAGS	= 	-Wall -Wextra -Wpedantic -Werror -std=c++11 -I/usr/local/include/cppconn
+LIB		=	-L./lib -L./ -lorm -L/usr/lib -lmysqlcppconn
+RM 		= 	rm -f
+
+all:		$(NAME)
+
+$(NAME):	$(OBJ)
+		$(CXX) $(OBJ) $(LIB) -o $(NAME)
+
+clean:
+		$(RM) $(OBJ)
+
+fclean:		clean
+		$(RM) $(NAME)
+
+re:		fclean all
